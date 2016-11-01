@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <title>demo-4</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<script type="text/babel">
+    var Notes = React.createClass({
+        render: function() {
+            return (
+                <ol>
+                    {
+                        React.Children.map(this.props.children, function (child) {
+                            return <li>{child}</li>;
+                        })
+                    }
+                </ol>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <Notes>
+            <span>hello</span>
+            <span>world</span>
+        </Notes>,
+        document.body
+    );
+</script>
+</body>
+</html>

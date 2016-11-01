@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <title>demo-3</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="demo"></div>
+<script type="text/babel">
+    var Html = React.createClass({
+        render: function(){
+            return <h1>hello,{this.props.name}</h1>;
+        }
+    });
+
+    ReactDOM.render(
+        <Html name="Felix"/>,
+        document.getElementById('demo')
+    );
+</script>
+</body>
+</html>

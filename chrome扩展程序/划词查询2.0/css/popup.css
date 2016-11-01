@@ -1,0 +1,146 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+
+html, body {
+    background: #f3efef;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+    border: 6px solid #f3efef;
+    width: 225px;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.contain {
+    display: block;
+    height: 45px;
+}
+
+.title {
+    height:45px;
+    font-size: 24px;
+    line-height:45px;
+}
+
+.checkbox{
+    margin:0;
+    padding:0;
+    border:none;
+    width:85px;
+    height:45px;
+    position:relative;
+    color:#fff;
+    background:none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    overflow: hidden;
+    border-radius: 33px
+    }
+.checkbox:before,
+.checkbox:after{
+    position: absolute;
+    left:0;top:0;
+    content:'';
+}
+.checkbox:before{
+    transition: all 0.4s;
+    position:absolute;
+    top:0;right:0;bottom:0;left:0;
+    border-radius: 33px;
+    background:#fff;
+    border:3px solid #E5E5E5;
+}
+.checkbox:after{
+    transition: all 0.2s;
+    border-radius: 33px;
+    top:4px;
+    left:4px;
+    width:36px;
+    height:36px;
+    background:#fff;
+    box-shadow:0px 4px 8px rgba(0,0,0,0.3),0px 0px 2px rgba(0,0,0,0.3);
+    -webkit-animation: checkbox_after 0.4s;-webkit-animation-fill-mode:both;
+  -moz-animation: checkbox_after 0.4s;-moz-animation-fill-mode:both;
+}
+.checkbox:hover:after{
+    box-shadow:0px 4px 8px rgba(0,0,0,0.4),0px 0px 2px rgba(0,0,0,0.3);
+}
+.checkbox:focus:before{
+    border:3px solid #C6C6C6;
+}
+.checkbox:focus{
+    outline: none;
+}
+.checkbox:checked:before{
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    border-style:solid;
+    border-color:#4CD864;
+    border-width: 22px 22px 22px 94px;
+}
+.checkbox:checked:after{
+    -webkit-animation: checkbox_after_checked 0.4s;-webkit-animation-fill-mode:both;
+  -moz-animation: checkbox_after_checked 0.4s;-moz-animation-fill-mode:both;
+}
+.checkbox:active:after{
+    width:44px;
+}
+.checkbox:active:checked:after{
+    width:44px;
+    margin-left:-8px;
+}
+@-webkit-keyframes checkbox_after {
+    0% {left:45px;}
+    70% {left:1px;}
+    100% {left:4px;}
+}
+@-webkit-keyframes checkbox_after_checked {
+    0% {left:4px;}
+    70% {left:47px;}
+    100% {left:45px;}
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}

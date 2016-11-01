@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <title>demo-9</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="demo"></div>
+<script type="text/babel">
+    function tick() {
+        const element = (
+            <h1>It is {new Date().toLocaleTimeString()}.</h1>
+        );
+        ReactDOM.render(
+            element,
+            document.getElementById('demo')
+        );
+    }
+
+    setInterval(tick, 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <title>demo-1</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="demo"></div>
+<script type="text/babel">
+var CheckLink = React.createClass({
+  render: function() {
+    // This takes any props passed to CheckLink and copies them to <a>
+    return <a {...this.props}>{this.props.children}</a>;
+  }
+});
+
+ReactDOM.render(
+  <CheckLink href="/checked.html">
+    Click here!
+  </CheckLink>,
+  document.getElementById('demo')
+);
+</script>
+</body>
+</html>

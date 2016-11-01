@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" />
+    <title>demo-6</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+<div id="demo"></div>
+<script type="text/babel">
+    var Component = React.createClass({
+        handleClick: function() {
+            this.refs.myTextInput.focus();
+        },
+
+        handleDbClick: function() {
+            alert('111');
+        },
+
+        handleFocus: function() {
+            console.log(this.refs.myTextInput.value);
+        },
+
+        render: function() {
+            return (
+                <div>
+                    <input type="text" ref="myTextInput" onFocus={this.handleFocus} onCut={this.handleFocus}/>
+                    <input type="button" value="Focus the text input" onClick={this.handleClick} onDoubleClick={this.handleDbClick} />
+                </div>
+            );
+        }
+        // 文档中有各种事件的详细说明(https://facebook.github.io/react/docs/events.html)
+    });
+
+    ReactDOM.render(
+        <Component />,
+        document.getElementById('demo')
+    );
+</script>
+</body>
+</html>
