@@ -1,3 +1,7 @@
+
+import downloaderHandle from './downloadHandle'
+import {DownloaderConfig} from './config'
+
 let downloader = (() => {
 
     function limitLoad(fn, options, srcs, max) {
@@ -47,7 +51,7 @@ let downloader = (() => {
                 max = 1;
             }
 
-            return limitLoad(downloaderHandle[options.type], options, options.srcs, max);
+            return limitLoad(downloaderHandle[options.type], options, options.srcs, max=DownloaderConfig.maxThread);
 
         }
     };

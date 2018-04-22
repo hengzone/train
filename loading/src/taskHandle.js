@@ -1,4 +1,6 @@
 
+import {javaScriptScrs} from './config'
+
 let emptyFn = function(){};
 
 let taskHandle = {};
