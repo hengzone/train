@@ -45,13 +45,13 @@ let downloader = (() => {
         /**
          * 处理下载任务
          */
-        handle: function(options, max = maxThread) {
+        handle: function(options, max = DownloaderConfig.maxThread) {
 
             if (options.async && options.async === false) {
                 max = 1;
             }
 
-            return limitLoad(downloaderHandle[options.type], options, options.srcs, max=DownloaderConfig.maxThread);
+            return limitLoad(downloaderHandle[options.type], options, options.srcs, max);
 
         }
     };

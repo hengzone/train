@@ -4,6 +4,7 @@
  * by：felix
  */
 
+import {TaskLevel} from './config'
 import MinPQ from './MinPQ';
 import taskHandle from './taskHandle';
 

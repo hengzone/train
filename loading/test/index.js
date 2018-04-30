@@ -49,4 +49,4 @@ taskManage.setProgress((per) => {
 taskManage.setComplete(() => {
 });
 
-// taskManage.start();
+taskManage.start();

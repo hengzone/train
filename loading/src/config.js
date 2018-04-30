@@ -2,7 +2,7 @@
  * 默认任务优先级
  * @type {number}
  */
-const defaultTaskPriority = 2;
+const defaultTaskPriority = 10;
 
 /**
  * 任务处理优先级

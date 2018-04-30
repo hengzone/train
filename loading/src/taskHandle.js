@@ -1,5 +1,6 @@
 
 import {javaScriptScrs} from './config'
+import downloader from './downloader'
 
 let emptyFn = function(){};
 
@@ -8,6 +9,12 @@ let taskHandle = {};
 taskHandle.loadJsFile = function(options) {
 
     if (options.srcs.length == 0) options.srcs = javaScriptScrs;
+
+    return downloader.handle(options);
+
+};
+
+taskHandle.loadImage = function(options) {
 
     return downloader.handle(options);
 
