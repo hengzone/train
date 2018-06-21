@@ -34,6 +34,11 @@ function PageBase(name) {
   };
 
   /**
+   * 保存上一页传递到当前页的参数
+   */
+  this.pageArgs = [];
+
+  /**
    * 这个函数在页面切换时显示页面调用，这里仅仅会把this.state.visible设置为true，Vue页面需要响应state.visible来显示或者隐藏页面，
    * 其中会调用this.enter如果需要在进入页面时进行操作，子类需要实现this.enter函数
    * @private
@@ -52,7 +57,7 @@ function PageBase(name) {
 
     this._entered = false;
 
-    this.enter && this.enter.call(this.ctx);
+    this.enter && this.enter.call(this.ctx, ...this.pageArgs);
 
   };
 

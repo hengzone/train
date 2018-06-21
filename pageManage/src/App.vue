@@ -16,7 +16,7 @@ export default {
     helloWorld
   },
   mounted() {
-    PageManage.push('helloWorld');
+    PageManage.replace('helloWorld', 'hello world!');
     setTimeout(() => {
       PageManage.pop('helloWorld');
     }, 5000)

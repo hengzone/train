@@ -19,11 +19,17 @@ let PageManage = {
    */
   pages: {},
 
-  push(name) {
+  push(name, ...arg) {
 
     let p = this.pages[name];
 
     if (!p) console.error(`[PageMgr] push page ${name} error!`);
+
+    if (arguments.length > 1) {
+      let args = [];
+      args = Array.prototype.slice.call(arguments, 1); // 取得要传递的参数
+      p.pageArgs = args;
+    }
 
     p._enter();
     this.pageStack.push(p);
@@ -47,6 +53,17 @@ let PageManage = {
     }
 
   },
+
+  replace(name, ...args) {
+
+    let p = this.pages[name];
+
+    if (!p) console.error(`[PageMgr] replace page ${name} error!`);
+
+    this.pop();
+    this.push(name, ...args);
+
+  }
 
 }
 

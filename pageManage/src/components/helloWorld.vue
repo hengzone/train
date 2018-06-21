@@ -21,8 +21,8 @@
         mounted() {
         },
 
-        onEnter() {
-          console.log('test: hello World enter!');
+        onEnter(str) {
+          console.log('test: hello World enter!', str);
         },
         onExit() {
           console.log('test: hello World exit!')
