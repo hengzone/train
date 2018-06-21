@@ -82,15 +82,13 @@ let defaultPage = {
 
       this.$nextTick( () => {
 
-        console.log('vnode:', vnode);
+        // console.log('vnode:', vnode);
 
         let root = vnode.children[0];
 
         if( root ) {
           this.page.ctx = root.componentInstance
         }
-
-        // this.page.emitDelayEnter();
 
       });
 
