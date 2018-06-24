@@ -1,0 +1,77 @@
+
+
+
+.my-select {
+    position: relative;
+    display: inline-block;
+    width: 500px;
+}
+.my-select * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.select-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 24px;
+    border: 1px solid #aaa;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 24px;
+}
+.select-item > span {
+    display: block;
+    overflow: hidden;
+    margin-right: 26px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select-drop {
+    position: absolute;
+    top: 100%;
+    z-index: 1;
+    width: 100%;
+    border: 1px solid #aaa;
+    border-top: 0;
+    background: #fff;
+    display: none;
+}
+
+.select-input-con {
+    position: relative;
+    padding: 5px;
+    white-space: nowrap;
+}
+.select-input-con > input[type="text"] {
+    width: 100%;
+    height: auto;
+}
+
+.select-list {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin: 0 4px 4px 0;
+    padding: 0 0 0 4px;
+    max-height: 500px;
+}
+
+.select-list li {
+    display: list-item;
+    cursor: pointer;
+    padding: 5px;
+    list-style: none;
+    line-height: 15px;
+    word-wrap: break-word;
+}
+.select-list li:hover {
+    background-color: #0f0;
+}
+.select-list li em {
+    color: #f00;
+    font-style: normal;
+}
