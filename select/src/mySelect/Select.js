@@ -4,8 +4,9 @@ import selectConfig from '../config/select_config'
 
 class Select {
 
-    constructor(id, arr) {
+    constructor(id, arr1, arr2) {
         this._rootDom = document.getElementById(id);
+        this._requestEnd = false;
         this._currentSelectd = null;
         this._inputTimer = null;
         this._searchDelay = selectConfig.search_delay;
@@ -18,7 +19,9 @@ class Select {
         this._inputValue = '';
         this._lastRes = [];
 
-        this._testArr = SelectParser.arrParser(arr);
+        this._testArr = SelectParser.arrParser(arr1);
+
+        this._fakeAsyncArr = arr2; // 模拟异步请求结果
 
         this.Init();
     }
@@ -33,6 +36,26 @@ class Select {
     Init() {
         this.Set_dom();
         this.Register_event();
+    }
+
+    Fake_async_request() {
+        this._requestEnd = false;
+        let randomDelay = Math.floor(Math.random() * (2000 - 200) + 200);
+        setTimeout(() => {
+            console.log('fake request!');
+            this.Receive_newArr(this._fakeAsyncArr, true)
+        }, randomDelay);
+    }
+
+    /**
+     * 模拟接收新数据（接收异步数据）
+     * @param newArr
+     * @param end
+     */
+    Receive_newArr(newArr, end = false) {
+        this._requestEnd = end;
+        let arr = SelectParser.arrParser(newArr);
+        this.Item_search(this._inputValue, arr, true);
     }
 
     Input_keyup(event) {
@@ -51,7 +74,14 @@ class Select {
                 // 去抖
                 clearTimeout(this._inputTimer);
                 this._inputTimer = setTimeout(() => {
-                    this.Item_search(text);
+
+                    /**
+                     * 添加模拟异步请求
+                     */
+                    this.Fake_async_request();
+
+                    this.Item_search(text, this._testArr);
+
                 }, this._searchDelay);
                 break;
         }
@@ -76,17 +106,19 @@ class Select {
 
     }
 
-    Item_search(val) {
+    Item_search(val, tarArr, newSearch = false) {
 
-        if (val == '') return;
+        if (val == '' || !Array.isArray(tarArr)) return;
 
         let item, startpos, prefix, fix, suffix, search_match, text;
         let results = 0;
         let query = val.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '');
         let regex = new RegExp( query, 'i');
-        let arr = this._testArr;
+        let arr = tarArr ;
 
-        this._lastRes = [];
+        this.Remove_noRes_item();
+
+        if(!newSearch) this._lastRes = [];
 
         for (let i = 0, len = arr.length; i < len; i++) {
 
@@ -115,13 +147,28 @@ class Select {
         }
 
         if (results < 1 && query.length) {
-            console.log('没有结果！');
+            if (this._requestEnd) {
+                console.log('没有结果！');
+                this.Add_noRes_item();
+            } else {
+                this.Add_waitRes_item();
+            }
             return ;
         } else {
             // TODO: to draw
             this.Draw_res();
         }
 
+    }
+
+    Add_noRes_item() {
+        this._listDom.innerHTML = '<li>没有查询结果</li>';
+    }
+    Add_waitRes_item() {
+        this._listDom.innerHTML = '<li>等待查询结果</li>';
+    }
+    Remove_noRes_item() {
+        this._listDom.innerHTML = '';
     }
 
     Item_click(event) {
@@ -145,7 +192,7 @@ class Select {
         }
         this._drawIndex = 0;
         let groups = this.Make_group(this._lastRes, this._drawGroupSize);
-        console.log(groups)
+        // console.log(groups)
         for (let i = 0, len = groups.length; i < len; i++) {
 
             this._drawTimer = setTimeout(() => {
@@ -217,6 +264,7 @@ class Select {
         this._selectdDom = this._rootDom.getElementsByClassName('selected-item')[0];
 
     }
+
 }
 
 export default Select;
