@@ -55,7 +55,7 @@ class Select {
     Receive_newArr(newArr, end = false) {
         this._requestEnd = end;
         let arr = SelectParser.arrParser(newArr);
-        this.Item_search(this._inputValue, arr, true);
+        this.Item_search(this._inputValue, arr, false);
     }
 
     Input_keyup(event) {
@@ -106,7 +106,7 @@ class Select {
 
     }
 
-    Item_search(val, tarArr, newSearch = false) {
+    Item_search(val, tarArr, newSearch = true) {
 
         if (val == '' || !Array.isArray(tarArr)) return;
 
@@ -116,9 +116,10 @@ class Select {
         let regex = new RegExp( query, 'i');
         let arr = tarArr ;
 
-        this.Remove_noRes_item();
-
-        if(!newSearch) this._lastRes = [];
+        if(newSearch){
+            this.Remove_noRes_item();
+            this._lastRes = [];
+        }
 
         for (let i = 0, len = arr.length; i < len; i++) {
 
