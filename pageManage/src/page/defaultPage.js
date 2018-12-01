@@ -78,7 +78,7 @@ let defaultPage = {
 
     if( this.page.state.visible ) {
 
-      let vnode =  c('div',{class:'ddd-page'}, slots);
+      let vnode =  c('div',{class:'page'}, slots);
 
       this.$nextTick( () => {
 
